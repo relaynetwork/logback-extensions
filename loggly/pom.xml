@@ -20,13 +20,26 @@
   <parent>
     <groupId>org.logback-extensions</groupId>
     <artifactId>logback-ext-parent</artifactId>
-    <version>0.1.3-SNAPSHOT</version>
+    <version>0.1.3-rn</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <artifactId>logback-ext-loggly</artifactId>
   <name>Logback Extensions :: Loggly</name>
   <packaging>jar</packaging>
+
+  <distributionManagement>
+    <repository>
+      <id>relay-private-s3-maven-repo</id>
+      <name>Relay S3 Maven Repository</name>
+      <url>s3://relay-maven-repo/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>relay-private-s3-maven-snapshot-repo</id>
+      <name>Relay S3 Maven Repository for Snapshots</name>
+      <url>s3://relay-maven-repo/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
@@ -64,6 +77,14 @@
         </executions>
       </plugin>
     </plugins>
+
+    <extensions>
+      <extension>
+        <groupId>org.springframework.build</groupId>
+        <artifactId>aws-maven</artifactId>
+        <version>5.0.0.RELEASE</version>
+      </extension>
+    </extensions>
   </build>
 
 </project>
